@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+
+int factorial(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    return n * factorial(n - 1);
+}
+int countAnagrams(char *word) {
+    int len = strlen(word);
+    int count[26] = {0}; 
+    int num, den;
+    
+    for (int i = 0; i < len; ++i) {
+        if (word[i] >= 'a' && word[i] <= 'z') {
+            count[word[i] - 'a']++;
+        } else if (word[i] >= 'A' && word[i] <= 'Z') {
+            count[word[i] - 'A']++;
+        }
+    }
+    
+    num = factorial(len);
+    den = 1;
+    
+    for (int i = 0; i < 26; ++i) {
+        if (count[i] > 1) {
+            den *= factorial(count[i]);
+        }
+    }
+    return num / den;
+}
+
+int main() {
+    char word[15];
+    printf("Введіть слово: ");
+    scanf("%s", word);
+    
+    int res = countAnagrams(word);
+    printf("Кількість анаграм: %d\n", res);
+    
+    return 0;
+}
