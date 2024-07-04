@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int main() {
+    int p;
+    scanf("%d", &p);
+
+    if (p < 2 || p > 20) {
+        printf("Невірна кількість чисел\n");
+        return 1;
+    }
+
+    int numbers[p];
+    for (int i = 0; i < p; i++) {
+        scanf("%d", &numbers[i]);
+    }
+
+    int res = numbers[0];
+    for (int i = 1; i < p; i++) {
+
+        int a = res;
+        int b = numbers[i];
+        while (b != 0) {
+            int t = b;
+            b = a % b;
+            a = t;
+        }
+        int gcd = a;
+
+        res = (res / gcd) * numbers[i];
+    }
+
+    printf("%d\n", res);
+
+    return 0;
+}
