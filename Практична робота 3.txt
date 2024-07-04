@@ -1,0 +1,32 @@
+#include <stdio.h>
+#define max 30
+
+int main() {
+    int p;
+    scanf("%d", &p);
+
+    if (p <= 0 || p > max) {
+        printf( "Введіть число між 1 та %d.\n", max);
+        return 1;
+    }
+
+    long a5[max + 1] = {0};
+    long a9[max + 1] = {0};
+    long a55[max + 1] = {0};
+    long a99[max + 1] = {0};
+
+    a5[1] = 1;
+    a9[1] = 1;
+
+    for (int i = 2; i <= p; i++) {
+        a5[i] = a9[i - 1];
+        a9[i] = a5[i - 1] + a55[i - 1];
+        a55[i] = a5[i - 1];
+        a99[i] = a9[i - 1];
+    }
+
+    long res = a5[p] + a9[p] + a55[p] + a99[p];
+    printf("%ld\n", res);
+
+    return 0;
+}
