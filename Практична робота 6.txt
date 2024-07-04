@@ -1,0 +1,25 @@
+Margo, [03.07.2024 23:26]
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int x1, y1, x2, y2;
+    scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
+
+    int dx = x2 - x1;
+    int dy = y2 - y1;
+
+    int dx_sq = dx * dx;
+    int dy_sq = dy * dy;
+
+    int sum_sq = dx_sq + dy_sq;
+
+    double length = sqrt(sum_sq);
+
+    printf("%.6lf\n", length);
+
+    return 0;
+}
+
+Margo, [03.07.2024 23:32]
+Практична робота 5
